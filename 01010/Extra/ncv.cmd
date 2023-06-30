@@ -14,7 +14,7 @@ del *.png)
 exit /b
 :dark
 mkdir tmp
-for %%f in (com* drive* folder-* network* starred*) do (
+for %%f in (com* drive* folder-* network* starred* trash*) do (
 	nconvert -xall -out png "%%f"
 	nconvert -hls 0 -15 0 -negate -out png -overwrite "%%~nf-4.png"
 	nconvert -hls 0 -15 0 -negate -out png -overwrite "%%~nf-5.png"

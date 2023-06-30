@@ -12,14 +12,15 @@ for %%f in (*.ico) do magick convert -compress zip %ops% "%%f" "%LSH%\%%f"
 exit /b
 :dark
 mkdir tmp
-for %%f in (com* drive* folder-* network* starred*) do (
+for %%f in (com* drive* folder-* network* starred* trash*) do (
 	pushd tmp
 	magick convert "..\%%f" "%%~nf.png"
 	magick mogrify -modulate 50,100,100 -channel RGB -negate "%%~nf-4.png"
 	magick mogrify -modulate 50,100,100 -channel RGB -negate "%%~nf-5.png"
+:: FIXME
 	rem copy /y "new\%%~nf-4.png"
 	rem copy /y "new\%%~nf-5.png"
-	magick convert -compress zip *.png "%%f"
-	del *.png
+	rem magick convert -compress zip *.png "%%f"
+	rem del *.png
 	popd
 )
